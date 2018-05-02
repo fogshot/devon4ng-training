@@ -1,0 +1,14 @@
+
+<div *ngIf="animal">
+  <h1>Description of {{animal.name}}</h1>
+  <ul>
+    <li>Size: {{animal.size}}</li>
+    <li>Legs: {{animal.legs}}</li>
+    <li>Noise: {{animal.noise}}</li>
+  </ul>
+</div>
+
+<div *ngIf="!animal">
+  <h1>Animal not found.</h1>
+  <p>The Animal with the given ID was not found.</p>
+</div>
