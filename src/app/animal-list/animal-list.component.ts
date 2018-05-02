@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ANIMALS } from '../mock-animals';
 import { Animal } from '../animal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-animal-list',
@@ -10,10 +11,11 @@ import { Animal } from '../animal';
 export class AnimalListComponent implements OnInit {
   animals = ANIMALS;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   onAnimalSelect(animal: Animal) {
-    // Exercise: Insert Click-Action here
+    // Exercise: Insert Click-Action here. Use router.navigate
+    this.router.navigate(['/animal/' + animal.id]);
   }
 
   ngOnInit() {
