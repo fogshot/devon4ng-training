@@ -13,7 +13,7 @@ export class AnimalListComponent implements OnInit {
   constructor() { }
 
   onAnimalSelect(animal: Animal) {
-    // Exercise: Insert Click-Action here
+    // Exercise: Insert Click-Action here. Use router.navigate
   }
 
   ngOnInit() {

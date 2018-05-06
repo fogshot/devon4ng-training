@@ -15,6 +15,8 @@ export class AnimalDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    // currently this component always shows the animal with ID=2.
+    // replace this example code to show the animal with the ID defined within the URL-param.
     this.animal = ANIMALS[2];
   }
 
