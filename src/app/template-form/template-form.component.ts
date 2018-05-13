@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateFormComponent implements OnInit {
 
+  exampleEmail: String = 'yourName@domain.com';
+
   contact: Object = {
   };
 
@@ -18,8 +20,8 @@ export class TemplateFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmitTemplateBased(a) {
-      console.log(a);
+  onSubmitTemplateBased(registerForm) {
+      console.log(registerForm);
   }
 
 }
