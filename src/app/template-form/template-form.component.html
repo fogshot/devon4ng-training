@@ -10,7 +10,7 @@
         <div *ngIf="!firstname.valid && (firstname.dirty || firstname.touched)" class="alert alert-danger">
           <div *ngIf="firstname.errors?.required">Please enter a name.</div>
           <div *ngIf="firstname.errors?.minlength">Insert at least 4 characters.</div>
-          <div  *ngIf="firstname.errors?.pattern">Only use chars of: a-z, A-Z," ".</div>
+          <div *ngIf="firstname.errors?.pattern">Only use chars of: a-z, A-Z," ".</div>
         </div>
       </div>
       <!--lastname-->
@@ -20,7 +20,7 @@
       </div>
     </fieldset>
 
-    <fieldset ngModelGroup="eMail">
+    <fieldset>
       <!--E-Mail-->
       <div class="form-group">
         <label>E-Mail:</label>
@@ -52,4 +52,7 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>	
   </form>
+
+  <p>Value: {{ registerForm.value | json }}</p>
+  <p>Validation status: {{registerForm.status }}</p>
 </div>
