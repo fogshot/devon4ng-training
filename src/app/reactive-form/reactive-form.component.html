@@ -8,9 +8,9 @@
           <label>Firstname:</label>
           <input class="form-control" type="text" name="firstname" id="firstname" formControlName="firstname">
           <div *ngIf="!registerForm.controls.firstname.valid && (registerForm.controls.firstname.dirty || registerForm.controls.firstname.touched)" class="alert alert-danger">
-            <div *ngIf="registerForm.controls.firstname.errors.required && (registerForm.controls.firstname.dirty || registerForm.controls.firstname.touched)">Please enter a name.</div>
-            <div *ngIf="registerForm.controls.firstname.errors.minlength && (registerForm.controls.firstname.dirty || registerForm.controls.firstname.touched)">Insert at least 4 characters.</div>
-            <div *ngIf="registerForm.controls.firstname.errors.pattern && (registerForm.controls.firstname.dirty || registerForm.controls.firstname.touched)">Only use chars of: a-z, A-Z," ".</div>
+            <div *ngIf="registerForm.controls.firstname.errors?.required">Please enter a name.</div>
+            <div *ngIf="registerForm.controls.firstname.errors?.minlength">Insert at least 4 characters.</div>
+            <div *ngIf="registerForm.controls.firstname.errors?.pattern">Only use chars of: a-z, A-Z," ".</div>
           </div>
         </div>
         <!--lastname-->
@@ -33,16 +33,16 @@
           <div class="form-group">
             <label>Password:</label>
             <input class="form-control" type="text" name="password" id="password" formControlName="password">
-            <div style="display:none" class="alert alert-danger">
-                <div style="display:none">Please enter a password.</div>
-                <div style="display:none">Enter at least 8 characters.</div>
+            <div *ngIf="!registerForm.controls.password.valid && (registerForm.controls.password.touched || registerForm.controls.password.dirty)" class="alert alert-danger">
+                <div *ngIf="registerForm.controls.password.errors?.required">Please enter a password.</div>
+                <div *ngIf="registerForm.controls.password.errors?.minlength">Enter at least 8 characters.</div>
               </div>
           </div>
           <!--Password-Repeat-->
           <div class="form-group">
             <label>Repeat Password:</label>
-            <input class="form-control" type="text" name="passwordRepeat" id="passwordRepeat" formControlName="passwordrepeat">
-            <div style="display:none" class="alert alert-danger">
+            <input class="form-control" type="text" name="passwordRepeat" id="passwordRepeat" formControlName="passwordRepeat">
+            <div *ngIf="!registerForm.controls.passwordRepeat.valid && (registerForm.controls.passwordRepeat.dirty || registerForm.controls.passwordRepeat.touched)" class="alert alert-danger">
               No match!
             </div>
           </div>

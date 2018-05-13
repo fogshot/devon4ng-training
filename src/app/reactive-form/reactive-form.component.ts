@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { equalValidator } from './equalValidator';
 
 @Component({
@@ -19,7 +19,7 @@ export class ReactiveFormComponent implements OnInit {
       'lastname': new FormControl(null, null),
       'email': new FormControl ('example@mail.com', null),
       'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
-      'passwordrepeat': new FormControl(null, [Validators.required, Validators.minLength(8), equalValidator('password')])
+      'passwordRepeat': new FormControl(null, [Validators.required, Validators.minLength(8), equalValidator('password')])
     });
   }
 

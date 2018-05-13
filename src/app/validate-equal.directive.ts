@@ -15,6 +15,8 @@ export class ValidateEqualDirective implements Validator {
     const a = c.value;
     const b = c.root.get(this.otherValue);
 
+    console.log(b);
+
     if (b && a !== b.value) {
       return { appValidateEqual: false };
     }
