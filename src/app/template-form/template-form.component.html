@@ -1,22 +1,22 @@
 <div class="container">
   <h1>This should be a template-driven form</h1>
-  <form #registerForm="ngForm" (ngSubmit)="onSubmitTemplateBased(registerForm.value)">
+  <form>
     
-    <fieldset ngModelGroup="name">
+    <fieldset>
       <!--Firstname-->
       <div class="form-group">
         <label>Firstname:</label>
-        <input class="form-control" type="text" name="firstname" id="firstname" ngModel required minlength="4" pattern="[a-zA-Z ]*" #firstname="ngModel">
-        <div *ngIf="!firstname.valid && (firstname.dirty || firstname.touched)" class="alert alert-danger">
-          <div *ngIf="firstname.errors?.required">Please enter a name.</div>
-          <div *ngIf="firstname.errors?.minlength">Insert at least 4 characters.</div>
-          <div *ngIf="firstname.errors?.pattern">Only use chars of: a-z, A-Z," ".</div>
+        <input class="form-control" type="text" name="firstname" id="firstname">
+        <div style="display:none" class="alert alert-danger">
+          <div>Please enter a name.</div>
+          <div>Insert at least 4 characters.</div>
+          <div>Only use chars of: a-z, A-Z," ".</div>
         </div>
       </div>
       <!--lastname-->
       <div class="form-group">
         <label>Lastname:</label>
-        <input class="form-control" type="text" name="lastname" id="lastname" ngModel>
+        <input class="form-control" type="text" name="lastname" id="lastname">
       </div>
     </fieldset>
 
@@ -24,35 +24,32 @@
       <!--E-Mail-->
       <div class="form-group">
         <label>E-Mail:</label>
-        <input class="form-control" type="text" name="eMail" id="eMail" [ngModel]=exampleEmail>
+        <input class="form-control" type="text" name="eMail" id="eMail">
       </div>
     </fieldset>
 
-    <fieldset ngModelGroup="login">
+    <fieldset>
         <!--Password-->
         <div class="form-group">
           <label>Password:</label>
-          <input class="form-control" type="text" name="password" id="password" ngModel required minlength="8" #password="ngModel">
-          <div *ngIf="!password.valid && (password.dirty || password.touched)" class="alert alert-danger">
-              <div *ngIf="password.errors?.required">Please enter a password.</div>
-              <div *ngIf="password.errors?.minlength">Enter at least 8 characters.</div>
+          <input class="form-control" type="text" name="password" id="password">
+          <div style="display:none" class="alert alert-danger">
+              <div>Please enter a password.</div>
+              <div>Enter at least 8 characters.</div>
             </div>
         </div>
         <!--Password-Repeat-->
         <div class="form-group">
           <label>Repeat Password:</label>
-          <input class="form-control" type="text" name="passwordRepeat" id="passwordRepeat" ngModel appValidateEqual="login.password" #passwordRepeat="ngModel">
-          <div *ngIf="passwordRepeat.invalid && (passwordRepeat.dirty || passwordRepeat.touched)" class="alert alert-danger">
+          <input class="form-control" type="text" name="passwordRepeat" id="passwordRepeat">
+          <div style="display:none" class="alert alert-danger">
             No match!
           </div>
         </div>
     </fieldset>
     
     <div class="form-group"> <!-- Submit Button !-->
-      <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>	
   </form>
-
-  <p>Value: {{ registerForm.value | json }}</p>
-  <p>Validation status: {{registerForm.status }}</p>
 </div>

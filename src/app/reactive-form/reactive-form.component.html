@@ -1,22 +1,22 @@
 <div class="container">
     <h1>This should be a reactive form</h1>
-    <form [formGroup]="registerForm">
+    <form>
       
       <fieldset>
         <!--Firstname-->
         <div class="form-group">
           <label>Firstname:</label>
-          <input class="form-control" type="text" name="firstname" id="firstname" formControlName="firstname">
-          <div *ngIf="!registerForm.controls.firstname.valid && (registerForm.controls.firstname.dirty || registerForm.controls.firstname.touched)" class="alert alert-danger">
-            <div *ngIf="registerForm.controls.firstname.errors?.required">Please enter a name.</div>
-            <div *ngIf="registerForm.controls.firstname.errors?.minlength">Insert at least 4 characters.</div>
-            <div *ngIf="registerForm.controls.firstname.errors?.pattern">Only use chars of: a-z, A-Z," ".</div>
+          <input class="form-control" type="text" name="firstname" id="firstname">
+          <div style="display:none" class="alert alert-danger">
+            <div>Please enter a name.</div>
+            <div>Insert at least 4 characters.</div>
+            <div>Only use chars of: a-z, A-Z," ".</div>
           </div>
         </div>
         <!--lastname-->
         <div class="form-group">
           <label>Lastname:</label>
-          <input class="form-control" type="text" name="lastname" id="lastname" formControlName="lastname">
+          <input class="form-control" type="text" name="lastname" id="lastname">
         </div>
       </fieldset>
   
@@ -24,7 +24,7 @@
         <!--E-Mail-->
         <div class="form-group">
           <label>E-Mail:</label>
-          <input class="form-control" type="text" name="eMail" id="eMail" formControlName="email">
+          <input class="form-control" type="text" name="eMail" id="eMail">
         </div>
       </fieldset>
   
@@ -32,27 +32,24 @@
           <!--Password-->
           <div class="form-group">
             <label>Password:</label>
-            <input class="form-control" type="text" name="password" id="password" formControlName="password">
-            <div *ngIf="!registerForm.controls.password.valid && (registerForm.controls.password.touched || registerForm.controls.password.dirty)" class="alert alert-danger">
-                <div *ngIf="registerForm.controls.password.errors?.required">Please enter a password.</div>
-                <div *ngIf="registerForm.controls.password.errors?.minlength">Enter at least 8 characters.</div>
+            <input class="form-control" type="text" name="password" id="password">
+            <div style="display:none" class="alert alert-danger">
+                <div>Please enter a password.</div>
+                <div>Enter at least 8 characters.</div>
               </div>
           </div>
           <!--Password-Repeat-->
           <div class="form-group">
             <label>Repeat Password:</label>
-            <input class="form-control" type="text" name="passwordRepeat" id="passwordRepeat" formControlName="passwordRepeat">
-            <div *ngIf="!registerForm.controls.passwordRepeat.valid && (registerForm.controls.passwordRepeat.dirty || registerForm.controls.passwordRepeat.touched)" class="alert alert-danger">
+            <input class="form-control" type="text" name="passwordRepeat" id="passwordRepeat">
+            <div style="display:none" class="alert alert-danger">
               No match!
             </div>
           </div>
       </fieldset>
       
       <div class="form-group"> <!-- Submit Button !-->
-        <button (click)="onSubmitTemplateBased(registerForm.value)" [disabled]="!registerForm.valid" type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>	
     </form>
-    
-    <p>Value: {{ registerForm.value | json }}</p>
-    <p>Validation status: {{registerForm.status }}</p>
   </div>  
