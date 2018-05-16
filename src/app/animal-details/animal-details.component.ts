@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ANIMALS } from '../mock-animals';
 import { Animal } from '../animal';
 import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-animal-details',
@@ -16,13 +17,11 @@ export class AnimalDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.paramMap
-      .subscribe(params => {
-        if (params.get('animalID') != null) {
-          const id = +params.get('animalID');
-          this.animal = ANIMALS[id];
-        }
-      });
+      this.route.params.subscribe(
+        params => {
+          this.animal = ANIMALS[params.animalID];
+      }
+      );
   }
 
 }
