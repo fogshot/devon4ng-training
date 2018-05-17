@@ -1,22 +1,23 @@
 <div class="container">
     <h1>This should be a reactive form</h1>
-    <form [formGroup]="registerForm">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmitTemplateBased()"
+      (keydown.enter)="onSubmitTemplateBased()">
       
-      <fieldset>
+      <fieldset formGroupName="name">
         <!--Firstname-->
         <div class="form-group">
           <label>Firstname:</label>
-          <input class="form-control" type="text" name="firstname" id="firstname" formControlName="firstname">
-          <div *ngIf="!registerForm.controls.firstname.valid && (registerForm.controls.firstname.dirty || registerForm.controls.firstname.touched)" class="alert alert-danger">
-            <div *ngIf="registerForm.controls.firstname.errors?.required">Please enter a name.</div>
-            <div *ngIf="registerForm.controls.firstname.errors?.minlength">Insert at least 4 characters.</div>
-            <div *ngIf="registerForm.controls.firstname.errors?.pattern">Only use chars of: a-z, A-Z," ".</div>
+          <input class="form-control" type="text" name="firstname" id="firstname" formControlName="first">
+          <div *ngIf="!firstControl.valid && firstControl.touched" class="alert alert-danger">
+            <div *ngIf="firstControl.getError('required')">Please enter a name.</div>
+            <div *ngIf="firstControl.getError('minlength')">Insert at least 4 characters.</div>
+            <div *ngIf="firstControl.getError('pattern')">Only use chars of: a-z, A-Z," ".</div>
           </div>
         </div>
         <!--lastname-->
         <div class="form-group">
           <label>Lastname:</label>
-          <input class="form-control" type="text" name="lastname" id="lastname" formControlName="lastname">
+          <input class="form-control" type="text" name="lastname" id="lastname" formControlName="last">
         </div>
       </fieldset>
   
@@ -32,7 +33,7 @@
           <!--Password-->
           <div class="form-group">
             <label>Password:</label>
-            <input class="form-control" type="text" name="password" id="password" formControlName="password">
+            <input class="form-control" type="password" name="password" id="password" formControlName="password">
             <div *ngIf="!registerForm.controls.password.valid && (registerForm.controls.password.touched || registerForm.controls.password.dirty)" class="alert alert-danger">
                 <div *ngIf="registerForm.controls.password.errors?.required">Please enter a password.</div>
                 <div *ngIf="registerForm.controls.password.errors?.minlength">Enter at least 8 characters.</div>
@@ -41,7 +42,7 @@
           <!--Password-Repeat-->
           <div class="form-group">
             <label>Repeat Password:</label>
-            <input class="form-control" type="text" name="passwordRepeat" id="passwordRepeat" formControlName="passwordRepeat">
+            <input class="form-control" type="password" name="passwordRepeat" id="passwordRepeat" formControlName="passwordRepeat">
             <div *ngIf="!registerForm.controls.passwordRepeat.valid && (registerForm.controls.passwordRepeat.dirty || registerForm.controls.passwordRepeat.touched)" class="alert alert-danger">
               No match!
             </div>
@@ -49,7 +50,7 @@
       </fieldset>
       
       <div class="form-group"> <!-- Submit Button !-->
-        <button (click)="onSubmitTemplateBased(registerForm.value)" [disabled]="!registerForm.valid" type="submit" class="btn btn-primary">Submit</button>
+        <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary">Submit</button>
       </div>	
     </form>
     

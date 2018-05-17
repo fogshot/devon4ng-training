@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators, AbstractControl, FormBuilder } from '@angular/forms';
 import { equalValidator } from './equalValidator';
 
 @Component({
@@ -7,24 +7,33 @@ import { equalValidator } from './equalValidator';
   templateUrl: './reactive-form.component.html',
   styleUrls: ['./reactive-form.component.css']
 })
-export class ReactiveFormComponent implements OnInit {
+export class ReactiveFormComponent {
 
-  registerForm: FormGroup;
+  registerForm = this.formBuilder.group({
+    name: this.formBuilder.group({
+      first: [null, [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.pattern('[a-zA-Z ]*')]
+      ],
+      last: null
+    }),
+    email: 'example@mail.com',
+    password: [null, [Validators.required, Validators.minLength(8)]],
+    passwordRepeat: [null, [Validators.required, Validators.minLength(8), equalValidator('password')]]
+  });
 
-  constructor() { }
-
-  ngOnInit() {
-    this.registerForm = new FormGroup({
-      'firstname': new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern('[a-zA-Z ]*')]),
-      'lastname': new FormControl(null, null),
-      'email': new FormControl ('example@mail.com', null),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
-      'passwordRepeat': new FormControl(null, [Validators.required, Validators.minLength(8), equalValidator('password')])
-    });
+  get firstControl(): FormControl {
+    return this.registerForm.get('name.first') as FormControl;
   }
 
-  onSubmitTemplateBased(registerForm) {
-    console.log(registerForm);
+  constructor(private formBuilder: FormBuilder) { }
+
+  onSubmitTemplateBased() {
+    console.log('SUBMIT');
+    if (this.registerForm.valid) {
+      console.log(this.registerForm.value);
+    }
   }
 
 }
