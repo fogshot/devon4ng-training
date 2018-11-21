@@ -1,10 +1,10 @@
 export class User {
     name: {
-        firstName: String,
-        lastName: String
+        firstName: string,
+        lastName: string
     };
-    eMail: String;
+    eMail: string;
     login: {
-        password: String
+        password: string
     };
 }
