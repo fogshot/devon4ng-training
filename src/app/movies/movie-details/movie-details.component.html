@@ -1,15 +1,14 @@
 <div>
-    <h2>Movie Details</h2>
     <dl>
       <dt>Title</dt>
-      <dd><input type="text" [(ngModel)]="movie.title"></dd>
+      <dd><input class="form-control" type="text" [(ngModel)]="movie.title"></dd>
       <dt>Directors</dt>
-      <dd><input type="text" [(ngModel)]="movie.directors"></dd>
+      <dd><input class="form-control" type="text" [(ngModel)]="movie.directors"></dd>
       <dt>Year</dt>
-      <dd><input type="number" [(ngModel)]="movie.year"></dd>
+      <dd><input class="form-control" type="number" [(ngModel)]="movie.year"></dd>
       <dt>Description</dt>
-      <dd><textarea rows="3" cols="33" [(ngModel)]="movie.description"></textarea></dd>
+      <dd><textarea class="form-control" rows="3" cols="33" [(ngModel)]="movie.description"></textarea></dd>
     </dl>
-    <button (click)="apply()">Apply</button>
-    <button (click)="create()">Create</button>
+    <button type="button" class="btn btn-primary mx-2" (click)="apply()">Apply</button>
+    <button type="button" class="btn btn-secondary mx-2" (click)="create()">Create</button>
 </div>
