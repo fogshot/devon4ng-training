@@ -1,3 +1,22 @@
-<p>
-  movie-overview works!
-</p>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Directors</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies; let i = index" (click)="selectMovie(movie)" [class.row-active]="isMovieSelected(movie)">
+        <td>{{i}}</td>
+        <td>{{movie.title}}</td>
+        <td>{{movie.directors}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  <h2>Selected movie</h2>
+  <app-movie-details [movie]="selectedMovie"></app-movie-details>
+</div>

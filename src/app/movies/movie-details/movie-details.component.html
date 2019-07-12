@@ -1,12 +1,12 @@
-<div>
+<div *ngIf="movie">
   <dl>
     <dt>Title</dt>
-    <dd>{{currentMovie.title}}</dd>
+    <dd>{{movie.title}}</dd>
     <dt>Directors</dt>
-    <dd>{{currentMovie.directors}}</dd>
+    <dd>{{movie.directors}}</dd>
     <dt>Year</dt>
-    <dd>{{currentMovie.year}}</dd>
+    <dd>{{movie.year}}</dd>
     <dt>Description</dt>
-    <dd>{{currentMovie.description}}</dd>
+    <dd>{{movie.description}}</dd>
   </dl>
 </div>
