@@ -17,6 +17,6 @@
   </table>
 </div>
 <div>
-  <h2>Selected movie</h2>
-  <app-movie-details [movie]="selectedMovie"></app-movie-details>
+  <app-movie-details [movie]="selectedMovie" *ngIf="selectedMovie" (movieUpdate)="onMovieUpdated($event)" (movieCreate)="onCreateMovie()"></app-movie-details>
+  <p *ngIf="!selectedMovie">none</p>
 </div>

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Movie} from '../movie';
 
 @Component({
@@ -7,6 +7,22 @@ import {Movie} from '../movie';
   styleUrls: ['./movie-details.component.scss']
 })
 export class MovieDetailsComponent {
-  @Input() movie: Movie;
+  private _movie: Movie;
+  @Output() movieUpdate = new EventEmitter<Movie>();
+  @Output() movieCreate = new EventEmitter<Movie>();
+  get movie(): Movie {
+    return this._movie;
+  }
 
+  @Input() set movie(value: Movie) {
+    this._movie = {...value};
+  }
+
+  apply(): void {
+    this.movieUpdate.emit(this._movie);
+  }
+
+  create(): void {
+    this.movieCreate.emit(this._movie);
+  }
 }
