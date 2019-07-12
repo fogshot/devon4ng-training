@@ -118,6 +118,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "CapMovieDb"
+    }
+  },
+  "defaultProject": "CapMovieDb",
+  "cli": {
+    "warnings": {
+      "versionMismatch": false
+    }
+  }
 }
